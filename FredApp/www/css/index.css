@@ -171,6 +171,10 @@ h1 {
 /*desktop*/
 @media (max-width: 768px) {
 
+    .sidebar.inactive {
+        margin-left: -260px;
+        min-height: 10vh;
+    }
 
     .hamburger-right {
         box-shadow: 0 4px 6px 0 rgba(0,0,0,.16),0 4px 12px 0 rgba(0,0,0,.12);
