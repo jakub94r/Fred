@@ -168,7 +168,18 @@ h1 {
     padding-top: 5px;
 }
 
-/*desktop*/
+#logo-only-small {
+    display: none
+}
+
+.wrapper {
+    transition: all 0.4s;
+}
+
+.wrapper.stretched {
+    padding-left: 0px;
+}
+/*mobile*/
 @media (max-width: 768px) {
 
     .sidebar.inactive {
@@ -176,6 +187,31 @@ h1 {
         min-height: 10vh;
     }
 
+    .hamburger-right {
+        box-shadow: 0 4px 6px 0 rgba(0,0,0,.16),0 4px 12px 0 rgba(0,0,0,.12);
+    }
+}
+
+/*mobile landscape*/
+@media  (max-height: 768px) {
+
+    .sidebar.inactive {
+        margin-left: -260px;
+        min-height: 10vh;
+    }
+
+    #logo-only-big {
+        display: none
+    }
+
+    #logo-only-small {
+        display: inline-block
+    }
+
+    .sidebar-text {
+        font-size:18px;
+    }
+    
     .hamburger-right {
         box-shadow: 0 4px 6px 0 rgba(0,0,0,.16),0 4px 12px 0 rgba(0,0,0,.12);
     }

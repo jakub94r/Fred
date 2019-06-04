@@ -39,6 +39,7 @@ $(document).ready(function () {
 
 $('.sidebar-button').on('click', function () {
     $('.sidebar').toggleClass('inactive');
+    $('.wrapper').toggleClass('stretched');
     $(".hamburger-right").toggle(500);
     $(".list-group").toggle();
 });
