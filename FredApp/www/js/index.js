@@ -37,6 +37,17 @@ $(document).ready(function () {
     // });
     // });
 
+    function hideTile(tile) {
+        tile.toggleClass('hidden')
+    }
+
+    function changeTileOrder(tile) {
+        $('.tile').each(function (index) {
+            $(this).css('order', '+=1')
+        });
+        tile.css({ order: 0 })
+    }
+
     $('.close-button').click(function (e) {
         var headElement = $(this).closest('.wow')
         headElement.toggleClass('hidden')
@@ -45,12 +56,23 @@ $(document).ready(function () {
     //this is a crude way to reorder tiles, and prone to overflow, but sufficient for now.
     //TODO: Take care of it after it's decided on how the tiles' structure is actually supposed to look
     function tileButtonClick(e) {
+        var fadeAnim = 'fadeIn'
+        var timeout = 600
         var element = $('.tile.' + e.target.classList[0])
-        element.toggleClass('hidden')
-        $('.tile').each(function (index) {
-            $(this).css('order', '+=1')
-        });
-        element.css({ order: 0 })
+        if (element.css('animation-name') == 'fadeIn') {
+            fadeAnim = 'fadeOut'
+            timeout = 600;
+            window.setTimeout(hideTile, timeout, element)
+        }
+        else {
+            fadeAnim = 'fadeIn'
+            element.toggleClass('hidden')
+            timeout = 0;
+        }
+        element.css({ 'animation-name': fadeAnim })
+
+        window.setTimeout(changeTileOrder, timeout, element)
+
     }
 
     $('.notes').click(tileButtonClick);
