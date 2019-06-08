@@ -21,34 +21,54 @@ var urlAddress = 'https://localhost:44341/api/values'
 
 $(document).ready(function () {
 
-// $('#testbutton').click(function (e) {
-//   $.ajax({
-//     type: "POST",
-//     url: "http://fredapp.000webhostapp.com/json.php",
-//     success: function(response) {
-//         console.log(response);
-//         $(".dbtest").append(response);
-//     },
-//     error: function(xhr, status, error) {
-//        console.log(xhr);
-//        console.log(status);
-//        console.log(error);
-//     }
-// });
-// });
+    // $('#testbutton').click(function (e) {
+    //   $.ajax({
+    //     type: "POST",
+    //     url: "http://fredapp.000webhostapp.com/json.php",
+    //     success: function(response) {
+    //         console.log(response);
+    //         $(".dbtest").append(response);
+    //     },
+    //     error: function(xhr, status, error) {
+    //        console.log(xhr);
+    //        console.log(status);
+    //        console.log(error);
+    //     }
+    // });
+    // });
 
-$('.sidebar-button').on('click', function () {
-    $('.sidebar').toggleClass('inactive');
-    $('.wrapper').toggleClass('stretched');
-    $(".hamburger-right").toggle(500);
-    $(".list-group").toggle();
-});
+    $('.close-button').click(function (e) {
+        var headElement = $(this).closest('.wow')
+        headElement.toggleClass('hidden')
+    });
+
+    //this is a crude way to reorder tiles, and prone to overflow, but sufficient for now.
+    //TODO: Take care of it after it's decided on how the tiles' structure is actually supposed to look
+    function tileButtonClick(e) {
+        var element = $('.tile.' + e.target.classList[0])
+        element.toggleClass('hidden')
+        $('.tile').each(function (index) {
+            $(this).css('order', '+=1')
+        });
+        element.css({ order: 0 })
+    }
+
+    $('.notes').click(tileButtonClick);
+    $('.chart1').click(tileButtonClick);
+    $('.chart2').click(tileButtonClick);
+
+    $('.sidebar-button').on('click', function () {
+        $('.sidebar').toggleClass('inactive');
+        $('.wrapper').toggleClass('stretched');
+        $(".hamburger-right").toggle(500);
+        $(".list-group").toggle();
+    });
 
 });
 
 var app = {
     // Application Constructor
-    initialize: function() {
+    initialize: function () {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
     },
 
@@ -56,12 +76,12 @@ var app = {
     //
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
-    onDeviceReady: function() {
+    onDeviceReady: function () {
         this.receivedEvent('deviceready');
     },
 
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
+    receivedEvent: function (id) {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');

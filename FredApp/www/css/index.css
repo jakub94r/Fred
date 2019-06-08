@@ -123,6 +123,11 @@ h1 {
     position:absolute;
     }
 
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+}
+
 .sidebar {
     z-index: 1050;
     position: fixed;
@@ -172,12 +177,41 @@ h1 {
     display: none
 }
 
+.hidden {
+    display: none
+}
+
 .wrapper {
     transition: all 0.4s;
 }
 
 .wrapper.stretched {
     padding-left: 0px;
+}
+
+.close-button {
+    position: absolute;
+    top: 30px;
+    right: 10px;
+}
+
+.add-button {
+}
+
+.page-footer {
+    margin-top: 50px
+}
+
+.tile.notes  {
+    order: 1;
+}
+
+.tile.chart1 {
+    order: 2;
+}
+
+.tile.chart2 {
+    order: 3;
 }
 /*mobile*/
 @media (max-width: 768px) {

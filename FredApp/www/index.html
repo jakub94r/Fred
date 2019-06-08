@@ -49,13 +49,13 @@
       </div>
 
       <div class="list-group list-group-flush pt-1">
-        <a href="#" class="list-group-item list-group-item-action waves-effect">
-          <i class="fas fa-angle-double-right mr-3"></i>Option 1
+        <a href="#" class="notes list-group-item list-group-item-action waves-effect ">
+          <i class="fas fa-angle-double-right mr-3"></i>Toggle Notes
         </a>
-        <a href="#" class="list-group-item list-group-item-action waves-effect">
-          <i class="fas fa-address-card mr-3"></i>Option 2</a>
-        <a href="#" class="list-group-item list-group-item-action waves-effect">
-          <i class="fab fa-android mr-3"></i>Option 3</a>
+        <a href="#" class="chart1 list-group-item list-group-item-action waves-effect ">
+          <i class="fas fa-address-card mr-3"></i>Toggle Chart One</a>
+        <a href="#" class="chart2 list-group-item list-group-item-action waves-effect ">
+          <i class="fab fa-android mr-3"></i>Toggle Chart Two</a>
       </div>
 
     </div>
@@ -69,13 +69,16 @@
     <div class="container-fluid">
 
       <!-- Heading -->
-      <div class="card mb-4 wow fadeIn">
+      <div class="card mb-4 tile notes wow fadeIn">
+        <div class="card-header text-center"></div>
+
         <div class="card-body d-sm-flex justify-content-between">
 
-          <h4 class="mb-2 mb-sm-0 pt-1">
+          <div class="mb-2 mb-sm-0 pt-1">
             <span class="dbtest"></span>
-            <button id="testbutton" class="btn btn-success testbutton1">Main Notes</button>
-          </h4>
+            <button class="btn btn-success add-button">Main Notes</button>
+            <button class="btn-xs btn-primary close-button">x</button>
+          </div>
 
         </div>
 
@@ -87,7 +90,7 @@
       <!-- Heading -->
 
       <!--Grid row-->
-      <div class="row wow fadeIn">
+      <div class="row tile chart1 wow fadeIn">
 
         <!--Grid column-->
         <div class="col-md-5 mb-4">
@@ -98,18 +101,17 @@
             <!--Card content-->
             <div class="card-body">
               <span class="dbtest"></span>
-              <button id="testbutton" class="btn btn-success testbutton1">NOTES</button>
+              <button class="btn btn-success add-button">CHART1 LIST</button>
             </div>
           </div>
 
           <div class="card mb-4">
             <div class="card-body">
               <span class="dbtest"></span>
-              <button id="testbutton" class="btn btn-success testbutton1">CHART2</button>
+              <button class="btn btn-success add-button">CHART1 IMAGE</button>
             </div>
           </div>
         </div>
-
 
         <!--Grid column-->
         <div class="col-md-7 mb-4">
@@ -117,7 +119,8 @@
             <div class="card-header text-center"></div>
             <div class="card-body">
               <span class="dbtest"></span>
-              <button id="testbutton" class="btn btn-success testbutton1">CHART1</button>
+              <button class="btn btn-success add-button">CHART1 DRAWING</button>
+              <button class="btn-xs btn-primary close-button">x</button>
             </div>
           </div>
 
@@ -126,19 +129,21 @@
 
       </div>
 
-      <div class="row wow fadeIn">
+      <div class="row tile chart2 wow fadeIn">
 
         <div class="col-md-7 mb-4">
           <div class="card mb-4">
+            <div class="card-header text-center"></div>
+
             <div class="card-body">
               <span class="dbtest"></span>
-              <button id="testbutton" class="btn btn-success testbutton1">DB</button>
+              <button class="btn btn-success add-button">CHART2 LIST</button>
             </div>
           </div>
           <div class="card mb-4">
             <div class="card-body">
               <span class="dbtest"></span>
-              <button id="testbutton" class="btn btn-success testbutton1">DB</button>
+              <button class="btn btn-success add-button">CHART2 IMAGE</button>
             </div>
           </div>
         </div>
@@ -148,7 +153,8 @@
             <div class="card-header text-center"></div>
             <div class="card-body">
               <span class="dbtest"></span>
-              <button id="testbutton" class="btn btn-success testbutton1">DB</button>
+              <button class="btn btn-success testbutton add-button">CHART2 DRAWING</button>
+              <button class="btn-xs btn-primary close-button">x</button>
             </div>
           </div>
 
@@ -164,8 +170,9 @@
   <footer class="page-footer text-center primary-color-dark wow fadeIn">
     <div class="pt-4">
       <div class="alert" role="alert">
-        <h6>Jakub XXX, Fred App 2019</h5>
-      </div>
+          <h6>You can elements from the sidebar menu on the left</h5>
+            <h6>Jakub XXX, Fred App 2019</h5>
+            </div>
     </div>
 
     <hr class="my-1">
