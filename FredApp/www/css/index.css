@@ -68,6 +68,66 @@ body {
     }
 }
 
+.btn {
+    padding-top: .375rem;
+    padding-bottom: .375rem;
+    padding-left: .75rem;
+    padding-right: .75rem;
+
+    text-transform: none;
+}
+
+.btn-note {
+    color: black;
+    margin: 0.05rem;
+}
+
+.btn-note:hover {
+    color: black;
+    background-color: #eeeeee;
+    border-color: rgb(200, 200, 200);
+  }
+  
+  .btn-note.disabled, .btn-note:disabled {
+    color: black;
+    background-color: rgb(173, 173, 173);
+    border-color: rgb(200, 200, 200);
+  }
+  
+  .btn-note:not(:disabled):not(.disabled):active, .btn-note:not(:disabled):not(.disabled).active,
+  .show > .btn-note.dropdown-toggle {
+    color: black;
+    background-color: rgb(173, 173, 173);
+    border-color: rgb(200, 200, 200);
+  }
+  
+  .btn-note:not(:disabled):not(.disabled):active:focus, .btn-note:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-note.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(200, 200, 200, 0.5);
+  }
+
+.btn-default {
+    font-size: 9px;
+}
+
+.btn-vertical-group {
+    background-color: #eeeeee; /* Green background */
+    border: 1px solid rgb(173, 173, 173); /* Green border */
+    color: black; /* White text */
+    cursor: pointer; /* Pointer/hand icon */
+    width: 96%; /* Set a width if needed */
+    margin: auto;
+    display: block; /* Make the buttons appear below each other */
+  }
+
+.line-control-menu-bar .dropdown-toggle {
+    font-size: 9px;
+}
+
+.card-body {
+    padding: 0.8rem;
+}
+
 h1 {
     font-size:24px;
     font-weight:normal;
@@ -195,11 +255,18 @@ h1 {
     right: 10px;
 }
 
-.add-button {
+#add-note-button {
+    max-width: 40%;
+    margin-left: 5%;
 }
 
 .page-footer {
     margin-top: 50px
+}
+
+.note-selector-tile {
+    max-height: 150px;
+    overflow-y: scroll;
 }
 
 .tile.notes  {
@@ -213,6 +280,7 @@ h1 {
 .tile.chart2 {
     order: 3;
 }
+
 /*mobile*/
 @media (max-width: 768px) {
 

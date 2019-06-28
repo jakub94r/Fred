@@ -13,6 +13,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/mdb.min.css" rel="stylesheet">
   <link href="css/style.min.css" rel="stylesheet">
+  <link href="css/editor.css" rel="stylesheet" />
   <link href="css/index.css" rel="stylesheet">
 
 </head>
@@ -65,28 +66,64 @@
   <!--Main Navigation-->
 
   <!--Main layout-->
+  <!-- Central Modal Small -->
+  <div class="modal fade" id="note-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <!-- Change class .modal-sm to change the size of the modal -->
+    <div class="modal-dialog modal-lg" role="document">
+
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title w-100" id="myModalLabel">Edit note</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <textarea isNewNote="false" id="note"></textarea> </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary btn-sm" id="save-note-button">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Central Modal Small -->
+
   <main class="pt-2 mx-lg-5 wrapper">
     <div class="container-fluid">
-
-      <!-- Heading -->
-      <div class="card mb-4 tile notes wow fadeIn">
-        <div class="card-header text-center"></div>
-
-        <div class="card-body d-sm-flex justify-content-between">
-
-          <div class="mb-2 mb-sm-0 pt-1">
-            <span class="dbtest"></span>
-            <button class="btn btn-success add-button">Main Notes</button>
-            <button class="btn-xs btn-primary close-button">x</button>
+      <!--Grid row-->
+      <div class="row tile notes wow fadeIn">
+        <!--Grid column-->
+        <div class="col-md-8 mb-4">
+          <div class="card mb-4">
+            <div class="card-header text-center"></div>
+            <!--Card content-->
+            <div class="card-body">
+              <p class="text" id="note-paragraph">
+              </p>
+              <button class="btn btn-sm btn-info read-button">read more</button>
+              <button class="btn btn-sm btn-warning edit-button">Edit</button>
+            </div>
           </div>
-
         </div>
-
-        <!--Card content-->
-        <div class="card-body d-sm-flex justify-content-between">
+        <!--Grid column-->
+        <div class="col-md-4 mb-4">
+          <div class="card mb-4">
+            <div class="card-header text-center"></div>
+            <div class="card-body note-selector-tile">
+              <div class="btn-vertical-group" id="note-group">
+                  <div>
+                      <div class="btn-group" noteId='1' style="width: 100%"><button class="btn btn-note choose-note" style="width: 90%">Bacon ipsum...</button><button class="btn btn-note delete-note" style="width: 10%"><span class="fas fa-trash-alt"></span></button></div>
+                  </div>
+              </div>              
+            </div>
+            <button class="btn btn-sm btn-success" id="add-note-button">Add new note</button>
+          </div>
         </div>
-
       </div>
+
+
+
       <!-- Heading -->
 
       <!--Grid row-->
@@ -170,18 +207,21 @@
   <footer class="page-footer text-center primary-color-dark wow fadeIn">
     <div class="pt-4">
       <div class="alert" role="alert">
-          <h6>You can elements from the sidebar menu on the left</h5>
-            <h6>Jakub XXX, Fred App 2019</h5>
-            </div>
+        <h6>You can add elements from the sidebar menu on the left</h5>
+          <h6>Jakub XXX, Fred App 2019</h5>
+      </div>
     </div>
 
     <hr class="my-1">
   </footer>
 
   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="js/mdb.min.js"></script>
   <script type="text/javascript" src="js/popper.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script type="text/javascript" src="js/jquery-sortable.js"></script>
+  <script type="text/javascript" src="js/editor.js"></script>
+  <script type="text/javascript" src="js/note.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   <script type="text/javascript">
     new WOW().init();
