@@ -95,6 +95,9 @@ $(document).ready(function () {
     $('#note-group').on("click", "button.choose-note", function () {
         var id = $(this).parent().attr('noteId');
         var note = noteArr.find(n => n.id == id)
+        console.log(noteArr);
+        console.log(id);
+        console.log(note);
         noteTile.updateTile(note);
     });
 
@@ -127,9 +130,10 @@ $(document).ready(function () {
     //this is a crude way to reorder tiles, and prone to overflow, but sufficient for now.
     //TODO: Take care of it after it's decided on how the tiles' structure is actually supposed to look
     function tileButtonClick(e) {
+        console.log(e);
         var fadeAnim = 'fadeIn'
         var timeout = 600
-        var element = $('.tile.' + e.target.classList[0])
+        var element = $('.tile.' + e.target.classList[1])
         if (element.css('animation-name') == 'fadeIn') {
             fadeAnim = 'fadeOut'
             timeout = 600;
@@ -146,9 +150,7 @@ $(document).ready(function () {
 
     }
 
-    $('.notes').click(tileButtonClick);
-    $('.chart1').click(tileButtonClick);
-    $('.chart2').click(tileButtonClick);
+    $('.toggle-tile').click(tileButtonClick);
 
     $('.sidebar-button').on('click', function () {
         $('.sidebar').toggleClass('inactive');
