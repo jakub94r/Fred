@@ -83,7 +83,7 @@ class NoteTile {
 
     updateTile(note) {
         this.note = note;
-        this.textTrimmed = text.substring(0, 20) + '...';
+        this.note.textTrimmed = this.note.text.substring(0, 20) + '...';
         $(this.tileId).empty();
         $(this.tileId).append(jQuery.parseHTML(note.text));
     }

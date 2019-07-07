@@ -21,36 +21,29 @@ var urlAddress = 'https://localhost:44341/api/values'
 
 $(document).ready(function () {
 
-    // $('#testbutton').click(function (e) {
-    //   $.ajax({
-    //     type: "POST",
-    //     url: "http://fredapp.000webhostapp.com/json.php",
-    //     success: function(response) {
-    //         console.log(response);
-    //         $(".dbtest").append(response);
-    //     },
-    //     error: function(xhr, status, error) {
-    //        console.log(xhr);
-    //        console.log(status);
-    //        console.log(error);
-    //     }
-    // });
-    // });
-
-
     var idCounter = 10;
+    var dataTransfer = new DataTransfer();
 
     //TODO
     //keep notes in device's memory instead
-    var noteArr = [];   
+    var noteArr = [];
     var noteTile;
 
+    function noteReadCallback(response) {
+        response.forEach(function (item, index) {
+            var note = new Note({ id: item['Id'], text: item['Text'], color: item['Color'] });
+            noteArr.push(note);
+        });
+        noteTile = new NoteTile('#note-paragraph', noteArr[0]);
+        noteArr.forEach(function (item) {
+            $('#note-group').append('<div class=note-choose-row ><div class="btn-group" noteId=' + item.getId() + ' style="width: 100%"><button class="btn btn-note choose-note" style="width: 90%">' + item.getTextTrimmed() + '</button><button class="btn btn-note delete-note" style="width: 10%"><span class="fas fa-trash-alt"></span></button></div></div>');
+        });
+        $('#note-paragraph').append(noteTile.getDisplayedNote().getText());
+    }
+
     function initializeNotes() {
-        var newNote = new Note({ id: 0, text: noteText, color: "white"});
         $('#note').Editor();
-        $('#note-paragraph').append(newNote.text);
-        noteArr.push(newNote);
-        noteTile = new NoteTile('#note-paragraph', newNote);
+        dataTransfer.read(noteReadCallback);
     }
 
     initializeNotes();
@@ -78,7 +71,7 @@ $(document).ready(function () {
         $('#note').val(newNoteText)
         if (isNewNote == 'true') {
             idCounter++;
-            var newNote = new Note({ id: null, text: newNoteText, color: "white"});
+            var newNote = new Note({ id: null, text: newNoteText, color: "white" });
             noteArr.push(newNote);
             noteTile.updateTile(noteArr[noteArr.length - 1]);
             $('#note-group').append('<div class=note-choose-row ><div class="btn-group" noteId=' + noteTile.getDisplayedNote().getId() + ' style="width: 100%"><button class="btn btn-note choose-note" style="width: 90%">' + noteTile.getDisplayedNote().getTextTrimmed() + '</button><button class="btn btn-note delete-note" style="width: 10%"><span class="fas fa-trash-alt"></span></button></div></div>');
@@ -102,7 +95,7 @@ $(document).ready(function () {
         var id = $(this).parent().attr('noteId');
         index = noteArr.findIndex(x => x.getId() == id);
         if (index > -1) { noteArr.splice(index, 1); }
-        if (noteTile.getDisplayedNote().getId() == id) { noteTile.updateTile(new Note({id: 0, text: "", color: "white"})) }
+        if (noteTile.getDisplayedNote().getId() == id) { noteTile.updateTile(new Note({ id: 0, text: "", color: "white" })) }
         $(this).parent().remove()
     });
 
@@ -154,12 +147,13 @@ $(document).ready(function () {
     });
 
     var readButton = $(".read-button");
+    var defaultHeight = 20;
+    var text = $("#note-paragraph");
+    var textHeight = 400;
+    var newHeight = 0;
+    text.css({ "max-height": defaultHeight, "overflow": "hidden" });
+
     readButton.on("click", function () {
-        var defaultHeight = 20;
-        var text = $("#note-paragraph");
-        var textHeight = text[0].scrollHeight;
-        var newHeight = 0;
-        text.css({ "max-height": defaultHeight, "overflow": "hidden" });
 
         if (text.hasClass("active")) {
             newHeight = defaultHeight;
@@ -188,17 +182,19 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function () {
-        this.receivedEvent('deviceready');
+        dataTransfer = new DataTransfer();
+        dataTransfer.connect();
+        //this.receivedEvent('deviceready');
     },
 
     // Update DOM on a Received Event
     receivedEvent: function (id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+        //var parentElement = document.getElementById(id);
+        //var listeningElement = parentElement.querySelector('.listening');
+        //var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        //listeningElement.setAttribute('style', 'display:none;');
+        //receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
     }
